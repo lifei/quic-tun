@@ -50,14 +50,14 @@ Find more quic-tun information at:
 	return rootCmd
 }
 
-func runCommand(cmd *cobra.Command, args []string) error {
+func runCommand(cmd *cobra.Command, args []string) error {	
 	options.PrintWorkingDir()
 	options.PrintFlags(cmd.Flags())
-	options.PrintConfig()
 
 	if err := viper.BindPFlags(cmd.Flags()); err != nil {
 		return err
-	}
+	}	
+	options.PrintConfig()
 
 	if err := viper.Unmarshal(clientOptions); err != nil {
 		return err
